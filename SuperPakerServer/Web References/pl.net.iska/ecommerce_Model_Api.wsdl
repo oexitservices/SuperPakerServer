@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://iska.net.pl/ecommerce/api/index" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="ecommerce_Model_Api" targetNamespace="https://iska.net.pl/ecommerce/api/index" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://iska.net.pl/ecommerce/api/index" />
+  </wsdl:types>
+  <wsdl:message name="supplyOpenIn">
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="supplyOpenOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="supplyCloseIn">
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="supplyCloseOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="supplySetProductIn">
+    <wsdl:part name="id" type="xsd:int" />
+    <wsdl:part name="supply_id" type="xsd:int" />
+    <wsdl:part name="sku" type="xsd:string" />
+    <wsdl:part name="bloz" type="xsd:int" />
+    <wsdl:part name="ean" type="xsd:string" />
+    <wsdl:part name="amount" type="xsd:float" />
+  </wsdl:message>
+  <wsdl:message name="supplySetProductOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="ecommerce_Model_ApiPort">
+    <wsdl:operation name="supplyOpen">
+      <documentation>Otwiera nowe zapotrzebowanie.</documentation>
+      <wsdl:input message="tns:supplyOpenIn" />
+      <wsdl:output message="tns:supplyOpenOut" />
+    </wsdl:operation>
+    <wsdl:operation name="supplyClose">
+      <documentation>Zamyka zapotrzebowanie.</documentation>
+      <wsdl:input message="tns:supplyCloseIn" />
+      <wsdl:output message="tns:supplyCloseOut" />
+    </wsdl:operation>
+    <wsdl:operation name="supplySetProduct">
+      <documentation>Ustawia pozycję na zapotrzebowaniu.</documentation>
+      <wsdl:input message="tns:supplySetProductIn" />
+      <wsdl:output message="tns:supplySetProductOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ecommerce_Model_ApiBinding" type="tns:ecommerce_Model_ApiPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="supplyOpen">
+      <soap:operation soapAction="https://iska.net.pl/ecommerce/api/index#supplyOpen" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supplyClose">
+      <soap:operation soapAction="https://iska.net.pl/ecommerce/api/index#supplyClose" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="supplySetProduct">
+      <soap:operation soapAction="https://iska.net.pl/ecommerce/api/index#supplySetProduct" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://iska.net.pl/ecommerce/api/index" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ecommerce_Model_ApiService">
+    <wsdl:port name="ecommerce_Model_ApiPort" binding="tns:ecommerce_Model_ApiBinding">
+      <soap:address location="https://iska.net.pl/ecommerce/api/index" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="VB" CodeBehind="SuperPakerService.asmx.vb" Class="SuperPakerServer.SuperPakerService" %>
